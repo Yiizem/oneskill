@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+    姓名：孟思颐佳 | 学号：24001010430 | 时间：2026-11-19 | 大模型：豆包
+    页面说明：数据库连接测试，提交用户名密码到 /api/database/test，成功与失败均有提示
+-->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据库连接测试 | KeTangAI</title>
+    <link rel="stylesheet" href="css/Cheney_common.css">
+    <link rel="stylesheet" href="css/Cheney_database.css">
+</head>
+
+<body>
+    <header class="Cheney_topbar">
+        <div class="Cheney_brand">
+            <span class="Cheney_brandMark"></span>
+            <span>KeTangAI</span>
+        </div>
+        <nav class="Cheney_nav">
+            <a class="Cheney_navLink" href="index.html">首页</a>
+            <a class="Cheney_navLink isActive" href="database.html">数据库测试</a>
+            <a class="Cheney_navLink" href="news.html">科技新闻</a>
+            <a class="Cheney_navLink" href="gallery.html">图文列表</a>
+        </nav>
+        <div class="Cheney_userTag">孟思颐佳 · 24001010430</div>
+    </header>
+
+    <main class="Cheney_page">
+        <div class="Cheney_sectionHead">
+            <div>
+                <h2 class="Cheney_sectionTitle">MySQL 数据库连接测试</h2>
+                <div class="Cheney_sectionDesc" style="margin-top: 10px;">输入账号密码后由后端建立临时连接并返回结果，不会保存任何凭据。</div>
+            </div>
+        </div>
+
+        <div class="Cheney_apiPanel">
+            <div class="Cheney_apiRow">
+                <span class="Cheney_apiMethod">POST</span>
+                <a class="Cheney_apiUrl" id="Cheney_apiUrl" href="#" target="_blank">http://localhost:8325/api/database/test</a>
+                <span>请求体：user / password / host / port / database</span>
+            </div>
+            <pre class="Cheney_code">{
+  "user": "root",
+  "password": "123456",
+  "host": "127.0.0.1",
+  "port": 3307,
+  "database": "Cheney_ketangai"
+}</pre>
+        </div>
+
+        <div class="Cheney_dbWrap">
+            <form class="Cheney_card Cheney_dbForm" id="Cheney_dbForm" autocomplete="off">
+                <h3 class="Cheney_formTitle">连接参数</h3>
+                <p class="Cheney_formTip">默认账号 root / 123456，可直接点击“测试连接”。</p>
+
+                <div class="Cheney_field">
+                    <label class="Cheney_label" for="Cheney_user">用户名</label>
+                    <input class="Cheney_input" id="Cheney_user" name="user" value="root" placeholder="请输入数据库用户名" required>
+                </div>
+
+                <div class="Cheney_field">
+                    <label class="Cheney_label" for="Cheney_password">密码</label>
+                    <input class="Cheney_input" id="Cheney_password" name="password" type="password" value="123456" placeholder="请输入数据库密码">
+                </div>
+
+                <div class="Cheney_fieldRow">
+                    <div class="Cheney_field">
+                        <label class="Cheney_label" for="Cheney_host">主机</label>
+                        <input class="Cheney_input" id="Cheney_host" name="host" value="127.0.0.1">
+                    </div>
+                    <div class="Cheney_field">
+                        <label class="Cheney_label" for="Cheney_port">端口</label>
+                        <input class="Cheney_input" id="Cheney_port" name="port" value="3307">
+                    </div>
+                </div>
+
+                <div class="Cheney_field">
+                    <label class="Cheney_label" for="Cheney_database">数据库名（可留空）</label>
+                    <input class="Cheney_input" id="Cheney_database" name="database" value="Cheney_ketangai">
+                </div>
+
+                <div class="Cheney_formActions">
+                    <button class="Cheney_btn" type="submit" id="Cheney_submitBtn">测试连接</button>
+                    <button class="Cheney_btn Cheney_btnGhost" type="reset" id="Cheney_resetBtn">重置</button>
+                </div>
+
+                <div class="Cheney_dbNote">
+                    提示：本地 MySQL 实例端口为 3307（3306 被系统服务占用），库名 Cheney_ketangai。
+                    如果连接失败，请先运行根目录 start.bat 确认数据库已启动。
+                </div>
+            </form>
+
+            <section class="Cheney_card Cheney_result" id="Cheney_result">
+                <div class="Cheney_resultIdle" id="Cheney_resultIdle">
+                    尚未测试。<br>填写左侧参数后点击“测试连接”，这里会显示：
+                    <br>· 连接成功：服务器版本、当前数据库、主机与端口
+                    <br>· 连接失败：错误码与具体原因
+                </div>
+                <div id="Cheney_resultBody" hidden></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="Cheney_footer">
+        KeTangAI 科技资讯平台 · 孟思颐佳 24001010430 · 数据库连接测试
+    </footer>
+
+    <script src="js/Cheney_database.js"></script>
+</body>
+
+</html>

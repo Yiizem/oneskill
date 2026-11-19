@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+    姓名：孟思颐佳 | 学号：24001010430 | 时间：2026-11-19 | 大模型：豆包
+    页面说明：科技新闻列表，数据来自 Cheney_news 表，页面展示后端接口链接与数据内容
+-->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技新闻列表 | KeTangAI</title>
+    <link rel="stylesheet" href="css/Cheney_common.css">
+    <link rel="stylesheet" href="css/Cheney_news.css">
+</head>
+
+<body>
+    <header class="Cheney_topbar">
+        <div class="Cheney_brand">
+            <span class="Cheney_brandMark"></span>
+            <span>KeTangAI</span>
+        </div>
+        <nav class="Cheney_nav">
+            <a class="Cheney_navLink" href="index.html">首页</a>
+            <a class="Cheney_navLink" href="database.html">数据库测试</a>
+            <a class="Cheney_navLink isActive" href="news.html">科技新闻</a>
+            <a class="Cheney_navLink" href="gallery.html">图文列表</a>
+        </nav>
+        <div class="Cheney_userTag">孟思颐佳 · 24001010430</div>
+    </header>
+
+    <main class="Cheney_page">
+        <div class="Cheney_sectionHead">
+            <div>
+                <h2 class="Cheney_sectionTitle">科技新闻列表</h2>
+                <div class="Cheney_sectionDesc" style="margin-top: 10px;">数据表：Cheney_news · 共 8 条测试数据</div>
+            </div>
+        </div>
+
+        <div class="Cheney_apiPanel">
+            <div class="Cheney_apiRow">
+                <span class="Cheney_apiMethod">GET</span>
+                <a class="Cheney_apiUrl" id="Cheney_apiUrl" href="#" target="_blank">http://localhost:8325/api/news</a>
+                <span id="Cheney_apiState">加载中…</span>
+                <span class="Cheney_apiToggle" id="Cheney_apiToggle">收起返回数据</span>
+            </div>
+            <pre class="Cheney_code" id="Cheney_apiCode">正在请求接口…</pre>
+        </div>
+
+        <div class="Cheney_toolbar">
+            <button class="Cheney_toolbarBtn" id="Cheney_refreshBtn" type="button">刷新数据</button>
+            <span class="Cheney_toolbarInfo" id="Cheney_totalInfo">—</span>
+        </div>
+
+        <div class="Cheney_newsList" id="Cheney_newsList">
+            <div class="Cheney_skeleton"></div>
+            <div class="Cheney_skeleton"></div>
+            <div class="Cheney_skeleton"></div>
+        </div>
+    </main>
+
+    <footer class="Cheney_footer">
+        KeTangAI 科技资讯平台 · 孟思颐佳 24001010430 · 科技新闻
+    </footer>
+
+    <script src="js/Cheney_news.js"></script>
+</body>
+
+</html>

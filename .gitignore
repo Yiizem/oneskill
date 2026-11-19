@@ -1,0 +1,20 @@
+# 姓名：孟思颐佳 | 学号：24001010430 | 时间：2026-11-19 | 大模型：豆包
+
+# 依赖
+node_modules/
+package-lock.json
+
+# 环境变量与数据库凭据
+.env
+backend/.env
+
+# 日志与临时文件
+*.log
+logs/
+npm-debug.log*
+_shots/
+
+# 系统文件
+Thumbs.db
+.DS_Store
+desktop.ini

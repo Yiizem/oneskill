@@ -1,0 +1,177 @@
+/*
+ * 姓名：孟思颐佳 | 学号：24001010430 | 时间：2026-11-19 | 大模型：豆包
+ * 文件说明：数据库连接测试页面样式
+ */
+
+.Cheney_dbWrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.Cheney_dbForm {
+    padding: 26px 26px 24px;
+}
+
+.Cheney_formTitle {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.Cheney_formTip {
+    font-size: 12.5px;
+    color: var(--Cheney_textSub);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.Cheney_field {
+    margin-bottom: 15px;
+}
+
+.Cheney_label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    color: #b8c9e2;
+    letter-spacing: 0.3px;
+}
+
+.Cheney_input {
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--Cheney_line);
+    background: rgba(6, 12, 24, 0.86);
+    color: var(--Cheney_text);
+    font-size: 14px;
+    font-family: var(--Cheney_mono);
+    outline: none;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.Cheney_input:focus {
+    border-color: var(--Cheney_lineStrong);
+    box-shadow: 0 0 0 3px rgba(78, 225, 255, 0.12);
+}
+
+.Cheney_fieldRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.Cheney_formActions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* 连接结果提示 */
+.Cheney_result {
+    padding: 22px 24px;
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.Cheney_resultIdle {
+    color: var(--Cheney_textSub);
+    font-size: 13.5px;
+    line-height: 1.9;
+}
+
+.Cheney_resultHead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.Cheney_resultDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--Cheney_cyan);
+    box-shadow: 0 0 12px currentColor;
+}
+
+.Cheney_resultOk {
+    border-color: rgba(64, 220, 150, 0.5);
+    background: linear-gradient(160deg, rgba(14, 46, 38, 0.9), rgba(8, 20, 20, 0.9));
+}
+
+.Cheney_resultOk .Cheney_resultDot {
+    background: #40dc96;
+    box-shadow: 0 0 14px rgba(64, 220, 150, 0.85);
+}
+
+.Cheney_resultOk .Cheney_resultHead,
+.Cheney_resultOk .Cheney_resultMsg {
+    color: #6df0b8;
+}
+
+.Cheney_resultFail {
+    border-color: rgba(255, 106, 120, 0.5);
+    background: linear-gradient(160deg, rgba(52, 16, 26, 0.92), rgba(24, 10, 16, 0.9));
+}
+
+.Cheney_resultFail .Cheney_resultDot {
+    background: #ff6a78;
+    box-shadow: 0 0 14px rgba(255, 106, 120, 0.85);
+}
+
+.Cheney_resultFail .Cheney_resultHead,
+.Cheney_resultFail .Cheney_resultMsg {
+    color: #ff9aa4;
+}
+
+.Cheney_resultMsg {
+    font-size: 13.5px;
+    line-height: 1.8;
+    word-break: break-all;
+}
+
+.Cheney_resultGrid {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 7px 12px;
+    font-size: 13px;
+}
+
+.Cheney_resultKey {
+    color: rgba(147, 166, 196, 0.9);
+}
+
+.Cheney_resultVal {
+    color: #d8ecff;
+    font-family: var(--Cheney_mono);
+    word-break: break-all;
+}
+
+.Cheney_dbNote {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 11px;
+    border: 1px dashed var(--Cheney_line);
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: var(--Cheney_textSub);
+}
+
+@media (max-width: 900px) {
+    .Cheney_dbWrap {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 520px) {
+    .Cheney_fieldRow {
+        grid-template-columns: 1fr;
+    }
+}
