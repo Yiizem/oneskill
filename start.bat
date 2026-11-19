@@ -1,6 +1,6 @@
 @echo off
 rem Author: Meng Siyijia (24001010430) | Date: 2026-11-19 | Model: Doubao
-rem Purpose: start local MySQL (port 3307) if needed, install deps, run Express on 8325
+rem Purpose: start local MySQL (port 430) if needed, install deps, run Express on 8325
 chcp 437 >nul
 setlocal
 title KeTangAI Backend - port 8325
@@ -12,8 +12,8 @@ echo   Student: 24001010430
 echo ==================================================
 echo.
 
-echo [1/3] Checking MySQL on port 3307 ...
-powershell -NoProfile -Command "$c = Get-NetTCPConnection -LocalPort 3307 -State Listen -ErrorAction SilentlyContinue; if ($c) { exit 0 } else { exit 1 }"
+echo [1/3] Checking MySQL on port 430 ...
+powershell -NoProfile -Command "$c = Get-NetTCPConnection -LocalPort 430 -State Listen -ErrorAction SilentlyContinue; if ($c) { exit 0 } else { exit 1 }"
 if errorlevel 1 goto START_MYSQL
 echo         MySQL is running.
 goto DEP_CHECK
@@ -26,7 +26,7 @@ echo         [WARN] mysqld not found, please start MySQL manually.
 goto DEP_CHECK
 
 :DO_START_MYSQL
-start "Cheney_MySQL" /min "%CHENEY_MYSQLD%" --datadir=E:\MySQLData\data --port=3307 --mysqlx=0 --log-error=E:\MySQLData\logs\mysqld.err
+start "Cheney_MySQL" /min "%CHENEY_MYSQLD%" --datadir=E:\MySQLData\data --port=430 --mysqlx=0 --log-error=E:\MySQLData\logs\mysqld.err
 echo         Start command sent, waiting 8 seconds ...
 timeout /t 8 /nobreak >nul
 goto DEP_CHECK

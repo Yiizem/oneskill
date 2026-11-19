@@ -98,3 +98,21 @@
 ```text
 请联调并检查：启动后端并逐个访问 /api/health、/api/news、/api/news/1、/api/gallery、/api/gallery/1，检查 404 与错误提示是否统一为 { code, msg, data }；用正确密码 123456 与错误密码分别测试 /api/database/test；确认四个页面与图片、样式、脚本均能正常返回，页面渲染无样式缺失。
 ```
+
+---
+
+## 记录 7
+
+- 时间：2026-11-19 14:40
+- 大模型名称：豆包（Doubao）
+- 提示词全文：
+
+```text
+MySQL端口改为0430，请重新创建一个 ssh-ed25519 尾缀是3246517834@qq.com的公钥
+```
+
+- 执行结果：MySQL 实例改监听 430 端口（数据目录 E:\MySQLData 不变，root/123456，库 Cheney_ketangai），
+  backend/.env 中 DB_PORT 改为 430，start.bat 的检测与启动端口同步改为 430，
+  database.html 默认端口与接口示例、Cheney_interface.md 示例、readme.md 说明一并更新；
+  同时生成新的 ed25519 密钥对，公钥注释为 3246517834@qq.com。
+
