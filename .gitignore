@@ -14,6 +14,9 @@ logs/
 npm-debug.log*
 _shots/
 
+# SSH 密钥（仅本地保留，禁止入库）
+.ssh/
+
 # 系统文件
 Thumbs.db
 .DS_Store
