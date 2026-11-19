@@ -116,3 +116,20 @@ MySQL端口改为0430，请重新创建一个 ssh-ed25519 尾缀是3246517834@qq
   database.html 默认端口与接口示例、Cheney_interface.md 示例、readme.md 说明一并更新；
   同时生成新的 ed25519 密钥对，公钥注释为 3246517834@qq.com。
 
+---
+
+## 记录 8
+
+- 时间：2026-11-19 14:55
+- 大模型名称：豆包（Doubao）
+- 提示词全文：
+
+```text
+MySQL端口改为8430
+```
+
+- 执行结果：MySQL 实例由 430 端口切换为 8430 端口（数据目录 E:\MySQLData、库 Cheney_ketangai、root/123456 均不变），
+  backend/.env 与 .env.example 的 DB_PORT 改为 8430，start.bat 的端口检测与启动参数同步改为 8430，
+  database.html 默认端口与接口示例、Cheney_interface.md 示例、readme.md 运行说明一并更新。
+
+

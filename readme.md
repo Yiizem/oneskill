@@ -33,7 +33,7 @@ KeTangAI/
 
 ## 运行方式
 
-1. 确认 MySQL 服务已启动（默认端口 430，账号 root / 123456，库 `Cheney_ketangai`）。
+1. 确认 MySQL 服务已启动（默认端口 8430，账号 root / 123456，库 `Cheney_ketangai`）。
 2. 双击根目录 `start.bat`（首次会自动安装依赖并建表）。
 3. 浏览器访问 <http://localhost:8325>。
 

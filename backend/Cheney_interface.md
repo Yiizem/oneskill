@@ -36,7 +36,7 @@
   "user": "root",
   "password": "123456",
   "host": "127.0.0.1",
-  "port": 430,
+  "port": 8430,
   "database": "Cheney_ketangai"
 }
 ```
@@ -51,7 +51,7 @@
     "Cheney_version": "8.4.4",
     "Cheney_db": "cheney_ketangai",
     "Cheney_host": "127.0.0.1",
-    "Cheney_port": 430,
+    "Cheney_port": 8430,
     "Cheney_user": "root"
   }
 }
