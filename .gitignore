@@ -17,6 +17,9 @@ _shots/
 # SSH 密钥（仅本地保留，禁止入库）
 .ssh/
 
+# 知识库上传的原始文件
+backend/uploads/
+
 # 系统文件
 Thumbs.db
 .DS_Store

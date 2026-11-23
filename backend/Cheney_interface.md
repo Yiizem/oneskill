@@ -298,3 +298,78 @@ model    选填，缺省取 .env 中 SILICONFLOW_MODEL
 - 错误码：40006 消息为空、40007 消息过长、40008 大模型接口返回错误、50006 服务异常、50007 未配置密钥、50008 请求超时或网络失败、50009 返回无法解析、50010 未返回有效内容
 - 修改时间：2026-11-23 13:40
 
+
+
+## 知识库（RAG）接口
+
+统一前缀 `/api/kb`，响应结构仍为 `{ code, msg, data }`，code=0 表示成功。
+
+### 1. 知识库列表
+- 方法与路径：`GET /api/kb`
+- 参数：无
+- data：`{ Cheney_list: [ { Cheney_kb_id, Cheney_kb_name, Cheney_kb_desc, Cheney_kb_created_at, Cheney_file_count, Cheney_chunk_count } ] }`
+
+### 2. 新建知识库
+- 方法与路径：`POST /api/kb`
+- body：`{ name, desc }`，name 必填且不超过 100 字
+- data：`{ Cheney_kb_id }`
+- 错误码：40101 名称为空、40102 名称超长
+
+### 3. 删除知识库
+- 方法与路径：`DELETE /api/kb/:id`
+- 说明：级联删除该库的文件记录与切片记录
+- data：`{ Cheney_deleted }`
+- 错误码：40103 id 不合法、40403 知识库不存在
+
+### 4. 文件列表
+- 方法与路径：`GET /api/kb/:id/files`
+- data：`{ Cheney_list: [ { Cheney_kb_file_id, Cheney_kb_file_name, Cheney_kb_file_ext, Cheney_kb_file_size, Cheney_kb_file_chars, Cheney_kb_file_chunks, Cheney_kb_file_status, Cheney_kb_file_error, Cheney_kb_file_upload_time } ] }`
+
+### 5. 上传并解析文件
+- 方法与路径：`POST /api/kb/:id/files`
+- 请求类型：`multipart/form-data`，字段名 `file`
+- 白名单：txt / md / pdf / doc / docx / ppt / pptx，单文件不超过 20MB
+- 处理流程：落盘 → 解析纯文本 → 按 480 字切片保留 80 字重叠 → 调用 bge-m3 生成向量 → 写库
+- data：`{ Cheney_kb_file_id, Cheney_kb_file_name, Cheney_kb_file_ext, Cheney_kb_file_chars, Cheney_kb_file_chunks, Cheney_kb_file_status, Cheney_kb_file_error, Cheney_embedding }`，Cheney_embedding 取值 `vector` 或 `keyword-fallback`
+- 错误码：40104 未收到文件、40403 知识库不存在
+
+### 6. 删除文件
+- 方法与路径：`DELETE /api/kb/file/:fileId`
+- 说明：连带删除该文件的全部切片与落盘文件
+- 错误码：40105 文件 id 不合法、40404 文件不存在
+
+### 7. 切片预览
+- 方法与路径：`GET /api/kb/chunks?fileId=1&limit=20`
+- data：`{ Cheney_list: [ { Cheney_kb_chunk_index, Cheney_kb_chunk_content, Cheney_kb_chunk_chars } ] }`
+
+### 8. 基于知识库问答
+- 方法与路径：`POST /api/kb/chat`
+- body：`{ kbId, question }`，question 不超过 1000 字
+- 检索：问题向量化后与切片向量算余弦相似度，取 Top4（`RAG_TOP_K`）拼接为【参考资料】；向量不可用时降级为关键词打分（阈值 0.06）
+- 响应格式：
+
+```json
+{
+  "code": 0,
+  "msg": "知识库问答成功",
+  "data": {
+    "Cheney_answer": "根据知识库资料……",
+    "Cheney_sources": [
+      {
+        "Cheney_rank": 1,
+        "Cheney_score": 0.7183,
+        "Cheney_file_name": "平台使用手册.pdf",
+        "Cheney_chunk_index": 2,
+        "Cheney_content": "片段原文……"
+      }
+    ],
+    "Cheney_mode": "vector",
+    "Cheney_model": "deepseek-ai/DeepSeek-V4-Flash",
+    "Cheney_usage": { "prompt_tokens": 702, "completion_tokens": 789, "total_tokens": 1491 }
+  }
+}
+```
+
+- 控制台：后端依次打印「检索模式」「发送给大模型的数据」（完整 messages）与「从大模型接收到的数据」（原始响应 JSON 文本）
+- 错误码：40103 知识库 id 不合法、40106 提问为空、40107 提问超长、40008 大模型接口错误、50007 未配置密钥、50008 请求大模型失败、50009 返回无法解析、50010 无有效内容
+- 修改时间：2026-11-23 14:10

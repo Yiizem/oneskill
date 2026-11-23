@@ -58,3 +58,33 @@ KeTangAI/
 | POST | /api/chat | 转发 SiliconFlow 大模型对话，返回模型回复 |
 
 统一响应格式：`{ "code": 0, "msg": "提示信息", "data": {...} }`，code=0 表示成功。
+
+
+## 知识库（RAG）功能（2026-11-23 新增）
+
+新增页面 `frontend/kb.html`（样式 `frontend/css/Cheney_kb.css`，脚本 `frontend/js/Cheney_kb.js`），提供：
+
+1. **知识库管理**：新建、列表、删除（级联删除文件与切片），列表展示文件数与切片数。
+2. **文件上传与解析**：支持 txt / md / pdf / doc / docx / ppt / pptx，单文件不超过 20MB；doc 与 ppt 通过本机 Office 转成 docx、pptx 后再解析。
+3. **切片与向量**：解析纯文本后按 480 字切片、80 字重叠，调用 SiliconFlow `BAAI/bge-m3` 生成 1024 维向量入库，可在线查看切片原文。
+4. **知识库问答**：向量检索 Top4 片段拼成参考资料交给 `deepseek-ai/DeepSeek-V4-Flash`，回答展示引用来源与检索模式；向量不可用时自动降级为关键词检索。
+5. **数据观测**：后端控制台打印「发送给大模型的数据」与「从大模型接收到的数据」，前端控制台打印提问与响应，页面提供接口原始数据面板。
+
+后端新增文件：`services/Cheney_docParser.js`、`services/Cheney_chunker.js`、`services/Cheney_embedding.js`、`models/Cheney_kbModel.js`、`controllers/Cheney_kbController.js`、`routes/Cheney_kbRoutes.js`；示例资料在 `backend/kb-seed/`（课程作业要求.docx、课堂汇报提纲.pptx、平台使用手册.pdf、常见问题.txt）。
+
+### 接口一览（知识库部分）
+
+| 方法 | 路径 | 说明 |
+| --- | --- | --- |
+| GET | /api/kb | 知识库列表（含文件数、切片数） |
+| POST | /api/kb | 新建知识库 |
+| DELETE | /api/kb/:id | 删除知识库（级联） |
+| GET | /api/kb/:id/files | 文件列表 |
+| POST | /api/kb/:id/files | 上传文件并解析入库（multipart 字段 file） |
+| DELETE | /api/kb/file/:fileId | 删除文件（连带切片） |
+| GET | /api/kb/chunks | 切片预览（fileId、limit） |
+| POST | /api/kb/chat | 基于知识库的问答（kbId、question） |
+
+### 前端页面（共 6 个）
+
+index.html · database.html · news.html · gallery.html · chat.html · kb.html

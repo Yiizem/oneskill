@@ -7,12 +7,21 @@
     "start": "node app.js",
     "dev": "node app.js"
   },
-  "keywords": ["express", "mysql", "restful", "mvc"],
+  "keywords": [
+    "express",
+    "mysql",
+    "restful",
+    "mvc"
+  ],
   "author": "孟思颐佳",
   "license": "MIT",
   "dependencies": {
+    "adm-zip": "^0.6.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mysql2": "^3.11.0"
+    "mammoth": "^1.13.0",
+    "multer": "^2.5.0",
+    "mysql2": "^3.11.0",
+    "pdf-parse": "^2.4.5"
   }
 }

@@ -7,6 +7,7 @@ const Cheney_databaseRoutes = require('./Cheney_databaseRoutes');
 const Cheney_newsRoutes = require('./Cheney_newsRoutes');
 const Cheney_galleryRoutes = require('./Cheney_galleryRoutes');
 const Cheney_chatRoutes = require('./Cheney_chatRoutes');
+const Cheney_kbRoutes = require('./Cheney_kbRoutes');
 
 const Cheney_router = Cheney_express.Router();
 
@@ -19,5 +20,6 @@ Cheney_router.use(Cheney_databaseRoutes);
 Cheney_router.use(Cheney_newsRoutes);
 Cheney_router.use(Cheney_galleryRoutes);
 Cheney_router.use(Cheney_chatRoutes);
+Cheney_router.use(Cheney_kbRoutes);
 
 module.exports = Cheney_router;

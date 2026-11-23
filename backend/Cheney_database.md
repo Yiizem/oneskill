@@ -103,3 +103,54 @@ VALUES
   ('5G-A 通感一体基站', '通信与雷达感知共口径天线，可同时探测低空目标。', 'images/gallery-07.jpg', '通信技术', '课堂实拍素材', '2026-11-12 08:40:00', 1203),
   ('端侧 AI 推理芯片', '面向移动端的低功耗 NPU，支持多模态模型离线推理。', 'images/gallery-08.jpg', '芯片', '课堂实拍素材', '2026-11-11 13:14:00', 986);
 ```
+
+
+## 步骤 6：知识库相关表（RAG）
+
+知识库功能新增三张表，均在 `Cheney_ketangai` 库内，字符集 utf8mb4。
+
+```sql
+USE Cheney_ketangai;
+
+CREATE TABLE IF NOT EXISTS Cheney_kb (
+  Cheney_kb_id INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '知识库主键',
+  Cheney_kb_name VARCHAR(100) NOT NULL COMMENT '知识库名称',
+  Cheney_kb_desc VARCHAR(255) DEFAULT '' COMMENT '知识库说明',
+  Cheney_kb_created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (Cheney_kb_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识库';
+
+CREATE TABLE IF NOT EXISTS Cheney_kb_file (
+  Cheney_kb_file_id INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '文件主键',
+  Cheney_kb_id INT UNSIGNED NOT NULL COMMENT '所属知识库',
+  Cheney_kb_file_name VARCHAR(255) NOT NULL COMMENT '原始文件名',
+  Cheney_kb_file_ext VARCHAR(20) NOT NULL DEFAULT '' COMMENT '扩展名',
+  Cheney_kb_file_size INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '字节数',
+  Cheney_kb_file_chars INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '解析出的字符数',
+  Cheney_kb_file_chunks INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '切片数量',
+  Cheney_kb_file_path VARCHAR(255) NOT NULL DEFAULT '' COMMENT '落盘路径',
+  Cheney_kb_file_status VARCHAR(20) NOT NULL DEFAULT 'ready' COMMENT '解析状态 ready/failed',
+  Cheney_kb_file_error VARCHAR(255) NOT NULL DEFAULT '' COMMENT '失败原因',
+  Cheney_kb_file_upload_time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上传时间',
+  PRIMARY KEY (Cheney_kb_file_id),
+  KEY idx_Cheney_kb_id (Cheney_kb_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识库文件';
+
+CREATE TABLE IF NOT EXISTS Cheney_kb_chunk (
+  Cheney_kb_chunk_id INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '切片主键',
+  Cheney_kb_id INT UNSIGNED NOT NULL COMMENT '所属知识库',
+  Cheney_kb_file_id INT UNSIGNED NOT NULL COMMENT '所属文件',
+  Cheney_kb_chunk_index INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '切片序号',
+  Cheney_kb_chunk_content TEXT NOT NULL COMMENT '切片正文',
+  Cheney_kb_chunk_embedding MEDIUMTEXT COMMENT '向量（JSON 数组，可为空）',
+  Cheney_kb_chunk_chars INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '字符数',
+  PRIMARY KEY (Cheney_kb_chunk_id),
+  KEY idx_Cheney_chunk_kb (Cheney_kb_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='知识库切片';
+```
+
+说明：
+- 向量以 JSON 数组字符串存入 `Cheney_kb_chunk_embedding`（bge-m3 输出 1024 维），检索时在内存中计算余弦相似度，无需安装向量数据库插件。
+- 删除知识库时级联删除文件与切片；删除文件时连带删除其切片。
+- 上传的原始文件落盘在 `backend/uploads/`，已在 `.gitignore` 中忽略。
+- 修改时间：2026-11-23 14:10
