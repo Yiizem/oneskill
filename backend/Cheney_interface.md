@@ -229,3 +229,72 @@ id  图文主键，正整数
 
 - 错误码：40002 id 不合法、40402 未找到对应图文、50004 查询异常
 - 修改时间：2026-11-19 11:30
+
+---
+
+## 接口 7：AI 对话默认配置
+
+- 接口路径：`/api/chat/config`
+- HTTP 方法：`GET`
+- 请求参数：无（不返回任何密钥信息）
+- 响应格式：
+
+```json
+{
+  "code": 0,
+  "msg": "操作成功",
+  "data": {
+    "Cheney_model": "deepseek-ai/DeepSeek-V4-Flash",
+    "Cheney_systemPrompt": "你是一个有用的助手，回答简洁准确，使用中文。"
+  }
+}
+```
+
+- 修改时间：2026-11-23 13:40
+
+---
+
+## 接口 8：AI 对话（转发 SiliconFlow 大模型）
+
+- 接口路径：`/api/chat`
+- HTTP 方法：`POST`
+- 请求参数（JSON Body）：
+
+```json
+{
+  "message": "用一句话介绍你自己",
+  "history": [
+    { "role": "user", "content": "上一轮用户问题" },
+    { "role": "assistant", "content": "上一轮模型回答" }
+  ],
+  "model": "deepseek-ai/DeepSeek-V4-Flash"
+}
+```
+
+```text
+message  必填，单条不超过 2000 字
+history  选填，只接受 user / assistant 角色，最多保留最近 20 条
+model    选填，缺省取 .env 中 SILICONFLOW_MODEL
+```
+
+- 后端行为：把 system 提示词 + history + 本次 message 组装为 messages，向 `https://api.siliconflow.cn/v1/chat/completions` 发起请求；
+  密钥从 `backend/.env` 的 `SILICONFLOW_API_KEY` 读取，不下发前端；发送与接收的完整 JSON 均打印到后端控制台。
+- 响应格式：
+
+```json
+{
+  "code": 0,
+  "msg": "对话成功",
+  "data": {
+    "Cheney_reply": "我是你的智能助手，随时准备用简洁准确的中文回答你的问题。",
+    "Cheney_model": "deepseek-ai/DeepSeek-V4-Flash",
+    "Cheney_usage": { "prompt_tokens": 20, "completion_tokens": 16, "total_tokens": 36 },
+    "Cheney_finishReason": "stop",
+    "Cheney_id": "01a206f2418c521f569d3c261fa21e12"
+  }
+}
+```
+
+- 错误码：40006 消息为空、40007 消息过长、40008 大模型接口返回错误、50006 服务异常、50007 未配置密钥、50008 请求超时或网络失败、50009 返回无法解析、50010 未返回有效内容
+- 修改时间：2026-11-23 13:40
+

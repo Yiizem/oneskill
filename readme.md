@@ -17,6 +17,7 @@ KeTangAI/
 │   ├── database.html       # 数据库连接测试
 │   ├── news.html           # 科技新闻列表
 │   ├── gallery.html        # 图文列表
+│   ├── chat.html           # AI 智能对话（后端代理 SiliconFlow）
 │   ├── css/                # 样式
 │   ├── js/                 # 脚本
 │   ├── images/             # 图片资源
@@ -53,5 +54,7 @@ KeTangAI/
 | GET | /api/news/:id | 新闻详情 |
 | GET | /api/gallery | 图文列表（分页） |
 | GET | /api/gallery/:id | 图文详情 |
+| GET | /api/chat/config | AI 对话默认模型与系统提示词（不含密钥） |
+| POST | /api/chat | 转发 SiliconFlow 大模型对话，返回模型回复 |
 
 统一响应格式：`{ "code": 0, "msg": "提示信息", "data": {...} }`，code=0 表示成功。

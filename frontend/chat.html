@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!--
+    姓名：孟思颐佳 | 学号：24001010430 | 时间：2026-11-23 | 大模型：豆包
+    页面说明：AI 聊天页面，通过后端 /api/chat 代理调用 SiliconFlow 大模型（密钥不出后端）
+-->
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 对话 | KeTangAI 科技资讯平台</title>
+    <link rel="stylesheet" href="css/Cheney_common.css">
+    <link rel="stylesheet" href="css/Cheney_chat.css">
+</head>
+
+<body>
+    <header class="Cheney_topbar">
+        <div class="Cheney_brand">
+            <span class="Cheney_brandMark"></span>
+            <span>KeTangAI</span>
+        </div>
+        <nav class="Cheney_nav">
+            <a class="Cheney_navLink" href="index.html">首页</a>
+            <a class="Cheney_navLink" href="database.html">数据库测试</a>
+            <a class="Cheney_navLink" href="news.html">科技新闻</a>
+            <a class="Cheney_navLink" href="gallery.html">图文列表</a>
+            <a class="Cheney_navLink isActive" href="chat.html">AI 对话</a>
+        </nav>
+        <div class="Cheney_userTag">孟思颐佳 · 24001010430</div>
+    </header>
+
+    <main class="Cheney_page">
+        <div class="Cheney_sectionHead">
+            <div>
+                <h2 class="Cheney_sectionTitle">AI 智能对话</h2>
+                <div class="Cheney_sectionDesc" style="margin-top: 10px;">
+                    后端代理调用 SiliconFlow 的大模型接口，发送与接收的完整数据会打印在浏览器控制台。
+                </div>
+            </div>
+            <span class="Cheney_badge" id="Cheney_chatModelBadge">模型加载中…</span>
+        </div>
+
+        <div class="Cheney_apiPanel">
+            <div class="Cheney_apiRow">
+                <span class="Cheney_apiMethod">POST</span>
+                <a class="Cheney_apiUrl" href="/api/chat" target="_blank" rel="noopener">/api/chat</a>
+                <span id="Cheney_chatApiStatus">状态：待发送</span>
+                <button class="Cheney_apiToggle" id="Cheney_chatApiToggle" type="button">查看原始数据</button>
+            </div>
+            <pre class="Cheney_code Cheney_codeHidden" id="Cheney_chatApiCode">尚未请求接口</pre>
+        </div>
+
+        <section class="Cheney_chatWrap Cheney_card">
+            <div class="Cheney_chatHead">
+                <div class="Cheney_chatHeadMain">
+                    <span class="Cheney_chatAvatar">AI</span>
+                    <div>
+                        <div class="Cheney_chatTitle">DeepSeek 对话助手</div>
+                        <div class="Cheney_chatSub" id="Cheney_chatSystemPrompt">系统提示词：你是一个有用的助手，回答简洁准确，使用中文。</div>
+                    </div>
+                </div>
+                <button class="Cheney_btnGhost Cheney_chatClear" id="Cheney_chatClear" type="button">清空对话</button>
+            </div>
+
+            <div class="Cheney_chatBody" id="Cheney_chatBody">
+                <div class="Cheney_msg Cheney_msgAssistant">
+                    <div class="Cheney_msgAvatar">AI</div>
+                    <div class="Cheney_msgBubble">
+                        <p>你好，我是课堂实践项目里的 AI 助手。可以问我技术问题、让它写一段代码，或者聊聊今天的大连天气。</p>
+                        <p class="Cheney_msgTip">发送后请在浏览器控制台（F12 → Console）查看完整的请求与响应 JSON。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Cheney_chatQuick" id="Cheney_chatQuick">
+                <button class="Cheney_toolbarBtn" type="button" data-q="用一句话介绍一下你自己">介绍一下你自己</button>
+                <button class="Cheney_toolbarBtn" type="button" data-q="用 JavaScript 写一个防抖函数，并解释原理">写个防抖函数</button>
+                <button class="Cheney_toolbarBtn" type="button" data-q="MySQL 的索引在什么情况下会失效？">索引失效场景</button>
+                <button class="Cheney_toolbarBtn" type="button" data-q="用三句话说明 RESTful 接口设计的核心原则">RESTful 原则</button>
+            </div>
+
+            <div class="Cheney_composer">
+                <textarea class="Cheney_composerInput" id="Cheney_chatInput" rows="3" maxlength="2000"
+                    placeholder="输入你的问题，Enter 发送，Shift + Enter 换行"></textarea>
+                <div class="Cheney_composerBar">
+                    <span class="Cheney_composerHint" id="Cheney_chatCounter">0 / 2000</span>
+                    <button class="Cheney_btn Cheney_composerSend" id="Cheney_chatSend" type="button">发送</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="Cheney_sectionHead" style="margin-top: 34px;">
+                <h2 class="Cheney_sectionTitle">接口说明</h2>
+                <div class="Cheney_sectionDesc">密钥存放在 backend/.env，前端不接触</div>
+            </div>
+            <div class="Cheney_card Cheney_chatNote">
+                <p><b>请求</b>：<code>POST /api/chat</code>，body 为 <code>{ message, history, model? }</code>，history 为最近的对话上下文。</p>
+                <p><b>响应</b>：统一结构 <code>{ code, msg, data }</code>，data 内含 <code>Cheney_reply</code>、<code>Cheney_model</code>、<code>Cheney_usage</code> 等字段。</p>
+                <p><b>控制台</b>：发送给大模型的完整 JSON 与从大模型收到的原始 JSON 都会 <code>console.log</code> 输出，便于核对请求参数。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="Cheney_footer">
+        KeTangAI 科技资讯平台 · 孟思颐佳 24001010430 · 大连东软信息学院 · 2026-11-23
+    </footer>
+
+    <script src="js/Cheney_chat.js"></script>
+</body>
+
+</html>

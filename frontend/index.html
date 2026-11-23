@@ -24,6 +24,7 @@
             <a class="Cheney_navLink" href="database.html">数据库测试</a>
             <a class="Cheney_navLink" href="news.html">科技新闻</a>
             <a class="Cheney_navLink" href="gallery.html">图文列表</a>
+            <a class="Cheney_navLink" href="chat.html">AI 对话</a>
         </nav>
         <div class="Cheney_userTag">孟思颐佳 · 24001010430</div>
     </header>
@@ -93,22 +94,30 @@
                     <p class="Cheney_navCardDesc">读取 Cheney_gallery 表中的图文数据，以图片卡片形式展示，图片为本地创建资源。</p>
                     <span class="Cheney_navCardLink">GET /api/gallery →</span>
                 </a>
+                <a class="Cheney_navCard" href="chat.html">
+                    <span class="Cheney_navIcon">AI</span>
+                    <h3 class="Cheney_navCardTitle">AI 智能对话</h3>
+                    <p class="Cheney_navCardDesc">后端代理调用 SiliconFlow 大模型接口，支持多轮对话，发送与接收的完整数据打印在浏览器控制台。</p>
+                    <span class="Cheney_navCardLink">POST /api/chat →</span>
+                </a>
             </div>
         </section>
 
         <section>
             <div class="Cheney_sectionHead" style="margin-top: 44px;">
                 <h2 class="Cheney_sectionTitle">全部已完成页面</h2>
-                <div class="Cheney_sectionDesc">共 4 个页面，均可直接访问</div>
+                <div class="Cheney_sectionDesc">共 5 个页面，均可直接访问</div>
             </div>
             <div class="Cheney_linkList">
                 <a class="Cheney_linkItem" href="index.html">index.html · 首页</a>
                 <a class="Cheney_linkItem" href="database.html">database.html · 数据库连接测试</a>
                 <a class="Cheney_linkItem" href="news.html">news.html · 科技新闻列表</a>
                 <a class="Cheney_linkItem" href="gallery.html">gallery.html · 图文列表</a>
+                <a class="Cheney_linkItem" href="chat.html">chat.html · AI 智能对话</a>
                 <a class="Cheney_linkItem" href="/api/health">/api/health · 健康检查接口</a>
                 <a class="Cheney_linkItem" href="/api/news">/api/news · 新闻列表接口</a>
                 <a class="Cheney_linkItem" href="/api/gallery">/api/gallery · 图文列表接口</a>
+                <a class="Cheney_linkItem" href="/api/chat/config">/api/chat/config · 对话默认配置接口</a>
             </div>
         </section>
     </main>

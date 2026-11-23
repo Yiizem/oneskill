@@ -133,3 +133,27 @@ MySQL端口改为8430
   database.html 默认端口与接口示例、Cheney_interface.md 示例、readme.md 运行说明一并更新。
 
 
+
+---
+
+## 记录 9
+
+- 时间：2026-11-23 13:40
+- 大模型名称：豆包（Doubao）
+- 提示词全文：
+
+```text
+创建AI聊天页面。
+Api-key：sk-eielkqxfjxidvudvmuukioohiksyhjcbggfbuozwakifehsy
+curl --request POST \
+  --url https://api.siliconflow.cn/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{"model": "deepseek-ai/DeepSeek-V4-Flash", "messages": [{"role": "system", "content": "你是一个有用的助手"}, {"role": "user", "content": "你好，请介绍一下你自己"}]}'
+在控制台里输出发送给大模型的数据和从大模型接收到的数据。
+```
+
+- 执行结果：新增 backend/controllers/Cheney_chatController.js、backend/routes/Cheney_chatRoutes.js，
+  提供 GET /api/chat/config 与 POST /api/chat；密钥写入 backend/.env（已 gitignore），前端不接触密钥；
+  新增 frontend/chat.html、css/Cheney_chat.css、js/Cheney_chat.js，五个页面导航均加入“AI 对话”入口，首页补充导航卡与链接清单；
+  后端与前端控制台分别打印发送给大模型、从大模型接收到的完整 JSON；接口实测成功回复、多轮上下文与空消息 40006 校验均通过。
