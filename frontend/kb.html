@@ -9,149 +9,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>知识库问答 | KeTangAI 科技资讯平台</title>
-    <link rel="stylesheet" href="css/Cheney_common.css">
-    <link rel="stylesheet" href="css/Cheney_kb.css">
+    <link rel="stylesheet" href="css/msyj430_common.css">
+    <link rel="stylesheet" href="css/msyj430_kb.css">
 </head>
 
 <body>
-    <header class="Cheney_topbar">
-        <div class="Cheney_brand">
-            <span class="Cheney_brandMark"></span>
+    <header class="msyj430_topbar">
+        <div class="msyj430_brand">
+            <span class="msyj430_brandMark"></span>
             <span>KeTangAI</span>
         </div>
-        <nav class="Cheney_nav">
-            <a class="Cheney_navLink" href="index.html">首页</a>
-            <a class="Cheney_navLink" href="database.html">数据库测试</a>
-            <a class="Cheney_navLink" href="news.html">科技新闻</a>
-            <a class="Cheney_navLink" href="gallery.html">图文列表</a>
-            <a class="Cheney_navLink" href="chat.html">AI 对话</a>
-            <a class="Cheney_navLink isActive" href="kb.html">知识库</a>
+        <nav class="msyj430_nav">
+            <a class="msyj430_navLink" href="index.html">首页</a>
+            <a class="msyj430_navLink" href="database.html">数据库测试</a>
+            <a class="msyj430_navLink" href="news.html">科技新闻</a>
+            <a class="msyj430_navLink" href="gallery.html">图文列表</a>
+            <a class="msyj430_navLink" href="chat.html">AI 对话</a>
+            <a class="msyj430_navLink isActive" href="kb.html">知识库</a>
         </nav>
-        <div class="Cheney_userTag">孟思颐佳 · 24001010430</div>
+        <div class="msyj430_userTag">孟思颐佳 · 24001010430</div>
     </header>
 
-    <main class="Cheney_page">
-        <div class="Cheney_sectionHead">
+    <main class="msyj430_page">
+        <div class="msyj430_sectionHead">
             <div>
-                <h2 class="Cheney_sectionTitle">知识库问答（RAG）</h2>
-                <div class="Cheney_sectionDesc" style="margin-top: 10px;">
+                <h2 class="msyj430_sectionTitle">知识库问答（RAG）</h2>
+                <div class="msyj430_sectionDesc" style="margin-top: 10px;">
                     上传本地资料 → 后端解析切片 → 向量入库 → 检索增强问答。发送给大模型和从大模型接收的数据会打印在浏览器控制台。
                 </div>
             </div>
-            <span class="Cheney_badge" id="Cheney_kbEmbedBadge">向量模型：BAAI/bge-m3</span>
+            <span class="msyj430_badge" id="msyj430_kbEmbedBadge">向量模型：BAAI/bge-m3</span>
         </div>
 
-        <div class="Cheney_apiPanel">
-            <div class="Cheney_apiRow">
-                <span class="Cheney_apiMethod">GET</span>
-                <a class="Cheney_apiUrl" href="/api/kb" target="_blank" rel="noopener">/api/kb</a>
-                <span class="Cheney_apiMethod">POST</span>
-                <a class="Cheney_apiUrl" href="/api/kb/chat" target="_blank" rel="noopener">/api/kb/chat</a>
-                <span id="Cheney_kbApiStatus">状态：待操作</span>
-                <button class="Cheney_apiToggle" id="Cheney_kbApiToggle" type="button">查看原始数据</button>
+        <div class="msyj430_apiPanel">
+            <div class="msyj430_apiRow">
+                <span class="msyj430_apiMethod">GET</span>
+                <a class="msyj430_apiUrl" href="/api/kb" target="_blank" rel="noopener">/api/kb</a>
+                <span class="msyj430_apiMethod">POST</span>
+                <a class="msyj430_apiUrl" href="/api/kb/chat" target="_blank" rel="noopener">/api/kb/chat</a>
+                <span id="msyj430_kbApiStatus">状态：待操作</span>
+                <button class="msyj430_apiToggle" id="msyj430_kbApiToggle" type="button">查看原始数据</button>
             </div>
-            <pre class="Cheney_code Cheney_codeHidden" id="Cheney_kbApiCode">尚未请求接口</pre>
+            <pre class="msyj430_code msyj430_codeHidden" id="msyj430_kbApiCode">尚未请求接口</pre>
         </div>
 
-        <section class="Cheney_kbManage">
-            <div class="Cheney_kbCol">
-                <div class="Cheney_kbPanelHead">
-                    <h3 class="Cheney_kbPanelTitle">知识库列表</h3>
-                    <span class="Cheney_toolbarInfo" id="Cheney_kbCount">共 0 个</span>
+        <section class="msyj430_kbManage">
+            <div class="msyj430_kbCol">
+                <div class="msyj430_kbPanelHead">
+                    <h3 class="msyj430_kbPanelTitle">知识库列表</h3>
+                    <span class="msyj430_toolbarInfo" id="msyj430_kbCount">共 0 个</span>
                 </div>
-                <div class="Cheney_kbList" id="Cheney_kbList">
-                    <div class="Cheney_kbEmpty">正在加载知识库…</div>
+                <div class="msyj430_kbList" id="msyj430_kbList">
+                    <div class="msyj430_kbEmpty">正在加载知识库…</div>
                 </div>
 
-                <div class="Cheney_kbCreate Cheney_card">
-                    <div class="Cheney_kbPanelHead">
-                        <h3 class="Cheney_kbPanelTitle">新建知识库</h3>
+                <div class="msyj430_kbCreate msyj430_card">
+                    <div class="msyj430_kbPanelHead">
+                        <h3 class="msyj430_kbPanelTitle">新建知识库</h3>
                     </div>
-                    <input class="Cheney_kbInput" id="Cheney_kbNewName" type="text" maxlength="100"
+                    <input class="msyj430_kbInput" id="msyj430_kbNewName" type="text" maxlength="100"
                         placeholder="知识库名称，例如 平台使用手册">
-                    <input class="Cheney_kbInput" id="Cheney_kbNewDesc" type="text" maxlength="255"
+                    <input class="msyj430_kbInput" id="msyj430_kbNewDesc" type="text" maxlength="255"
                         placeholder="一句话说明这个知识库存放什么资料">
-                    <button class="Cheney_btn" id="Cheney_kbCreateBtn" type="button">创建知识库</button>
+                    <button class="msyj430_btn" id="msyj430_kbCreateBtn" type="button">创建知识库</button>
                 </div>
             </div>
 
-            <div class="Cheney_kbCol Cheney_kbColWide">
-                <div class="Cheney_kbPanelHead">
-                    <h3 class="Cheney_kbPanelTitle" id="Cheney_kbFileTitle">文件管理 · 未选择知识库</h3>
-                    <span class="Cheney_toolbarInfo" id="Cheney_kbFileInfo">先在上方选择或创建知识库</span>
+            <div class="msyj430_kbCol msyj430_kbColWide">
+                <div class="msyj430_kbPanelHead">
+                    <h3 class="msyj430_kbPanelTitle" id="msyj430_kbFileTitle">文件管理 · 未选择知识库</h3>
+                    <span class="msyj430_toolbarInfo" id="msyj430_kbFileInfo">先在上方选择或创建知识库</span>
                 </div>
 
-                <div class="Cheney_kbUploadBar">
-                    <input class="Cheney_kbFileInput" id="Cheney_kbFile" type="file"
+                <div class="msyj430_kbUploadBar">
+                    <input class="msyj430_kbFileInput" id="msyj430_kbFile" type="file"
                         accept=".txt,.md,.pdf,.doc,.docx,.ppt,.pptx">
-                    <button class="Cheney_toolbarBtn" id="Cheney_kbUploadBtn" type="button" disabled>上传并解析</button>
-                    <span class="Cheney_toolbarInfo">支持 txt / md / pdf / doc / docx / ppt / pptx，单个文件不超过 20MB</span>
+                    <button class="msyj430_toolbarBtn" id="msyj430_kbUploadBtn" type="button" disabled>上传并解析</button>
+                    <span class="msyj430_toolbarInfo">支持 txt / md / pdf / doc / docx / ppt / pptx，单个文件不超过 20MB</span>
                 </div>
-                <div class="Cheney_kbProgress Cheney_kbProgressHidden" id="Cheney_kbProgress">
-                    <span id="Cheney_kbProgressText">上传中…</span>
+                <div class="msyj430_kbProgress msyj430_kbProgressHidden" id="msyj430_kbProgress">
+                    <span id="msyj430_kbProgressText">上传中…</span>
                 </div>
 
-                <div class="Cheney_kbFiles" id="Cheney_kbFiles">
-                    <div class="Cheney_kbEmpty">暂未选择知识库</div>
+                <div class="msyj430_kbFiles" id="msyj430_kbFiles">
+                    <div class="msyj430_kbEmpty">暂未选择知识库</div>
                 </div>
             </div>
         </section>
 
-        <section class="Cheney_kbChatWrap Cheney_card">
-            <div class="Cheney_kbPanelHead">
+        <section class="msyj430_kbChatWrap msyj430_card">
+            <div class="msyj430_kbPanelHead">
                 <div>
-                    <h3 class="Cheney_kbPanelTitle" id="Cheney_kbChatTitle">知识库问答 · 未选择知识库</h3>
-                    <div class="Cheney_kbChatSub">回答只依据知识库检索到的片段，命中来源会显示在气泡下方</div>
+                    <h3 class="msyj430_kbPanelTitle" id="msyj430_kbChatTitle">知识库问答 · 未选择知识库</h3>
+                    <div class="msyj430_kbChatSub">回答只依据知识库检索到的片段，命中来源会显示在气泡下方</div>
                 </div>
-                <button class="Cheney_btnGhost Cheney_btn" id="Cheney_kbChatClear" type="button">清空问答</button>
+                <button class="msyj430_btnGhost msyj430_btn" id="msyj430_kbChatClear" type="button">清空问答</button>
             </div>
 
-            <div class="Cheney_kbChatBody" id="Cheney_kbChatBody">
-                <div class="Cheney_kbMsg Cheney_kbMsgAssistant">
-                    <div class="Cheney_kbMsgAvatar">KB</div>
-                    <div class="Cheney_kbMsgBubble">
+            <div class="msyj430_kbChatBody" id="msyj430_kbChatBody">
+                <div class="msyj430_kbMsg msyj430_kbMsgAssistant">
+                    <div class="msyj430_kbMsgAvatar">KB</div>
+                    <div class="msyj430_kbMsgBubble">
                         <p>先选择一个知识库，再提问。例如「平台默认端口是多少？」「作业对数据库有什么要求？」</p>
-                        <p class="Cheney_kbMsgTip">发送后可在浏览器控制台查看请求与响应数据（后端控制台同时打印大模型收发 JSON）。</p>
+                        <p class="msyj430_kbMsgTip">发送后可在浏览器控制台查看请求与响应数据（后端控制台同时打印大模型收发 JSON）。</p>
                     </div>
                 </div>
             </div>
 
-            <div class="Cheney_kbQuick" id="Cheney_kbQuick">
-                <button class="Cheney_toolbarBtn" type="button" data-q="这个知识库里有哪些资料？">这个库里有什么</button>
-                <button class="Cheney_toolbarBtn" type="button" data-q="项目的启动方式是什么？">启动方式</button>
-                <button class="Cheney_toolbarBtn" type="button" data-q="知识库支持哪些文件格式？">支持哪些格式</button>
-                <button class="Cheney_toolbarBtn" type="button" data-q="作业对数据库和数据量有什么要求？">数据库要求</button>
+            <div class="msyj430_kbQuick" id="msyj430_kbQuick">
+                <button class="msyj430_toolbarBtn" type="button" data-q="这个知识库里有哪些资料？">这个库里有什么</button>
+                <button class="msyj430_toolbarBtn" type="button" data-q="项目的启动方式是什么？">启动方式</button>
+                <button class="msyj430_toolbarBtn" type="button" data-q="知识库支持哪些文件格式？">支持哪些格式</button>
+                <button class="msyj430_toolbarBtn" type="button" data-q="作业对数据库和数据量有什么要求？">数据库要求</button>
             </div>
 
-            <div class="Cheney_kbComposer">
-                <textarea class="Cheney_kbComposerInput" id="Cheney_kbInput" rows="3" maxlength="1000"
+            <div class="msyj430_kbComposer">
+                <textarea class="msyj430_kbComposerInput" id="msyj430_kbInput" rows="3" maxlength="1000"
                     placeholder="基于选中的知识库提问，Enter 发送，Shift + Enter 换行"></textarea>
-                <div class="Cheney_kbComposerBar">
-                    <span class="Cheney_toolbarInfo" id="Cheney_kbCounter">0 / 1000</span>
-                    <button class="Cheney_btn" id="Cheney_kbSend" type="button" disabled>发送</button>
+                <div class="msyj430_kbComposerBar">
+                    <span class="msyj430_toolbarInfo" id="msyj430_kbCounter">0 / 1000</span>
+                    <button class="msyj430_btn" id="msyj430_kbSend" type="button" disabled>发送</button>
                 </div>
             </div>
         </section>
 
         <section>
-            <div class="Cheney_sectionHead" style="margin-top: 34px;">
-                <h2 class="Cheney_sectionTitle">接口说明</h2>
-                <div class="Cheney_sectionDesc">解析与向量化都在后端完成，密钥只存在 backend/.env</div>
+            <div class="msyj430_sectionHead" style="margin-top: 34px;">
+                <h2 class="msyj430_sectionTitle">接口说明</h2>
+                <div class="msyj430_sectionDesc">解析与向量化都在后端完成，密钥只存在 backend/.env</div>
             </div>
-            <div class="Cheney_card Cheney_kbNote">
+            <div class="msyj430_card msyj430_kbNote">
                 <p><b>知识库管理</b>：<code>GET /api/kb</code> 列表、<code>POST /api/kb</code> 新建、<code>DELETE /api/kb/:id</code> 删除（连带文件与切片）。</p>
                 <p><b>文件上传</b>：<code>POST /api/kb/:id/files</code>，multipart 字段名 <code>file</code>，上传后立即解析、切片并生成向量。</p>
                 <p><b>文件与切片</b>：<code>GET /api/kb/:id/files</code> 文件列表、<code>DELETE /api/kb/file/:fileId</code> 删除文件、<code>GET /api/kb/chunks?fileId=</code> 切片预览。</p>
-                <p><b>问答</b>：<code>POST /api/kb/chat</code>，body 为 <code>{ kbId, question }</code>，data 内含 <code>Cheney_answer</code>、<code>Cheney_sources</code>、<code>Cheney_mode</code>。</p>
+                <p><b>问答</b>：<code>POST /api/kb/chat</code>，body 为 <code>{ kbId, question }</code>，data 内含 <code>msyj430_answer</code>、<code>msyj430_sources</code>、<code>msyj430_mode</code>。</p>
             </div>
         </section>
     </main>
 
-    <footer class="Cheney_footer">
+    <footer class="msyj430_footer">
         KeTangAI 科技资讯平台 · 孟思颐佳 24001010430 · 大连东软信息学院 · 2026-11-23
     </footer>
 
-    <script src="js/Cheney_kb.js"></script>
+    <script src="js/msyj430_kb.js"></script>
 </body>
 
 </html>

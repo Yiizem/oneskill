@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     姓名：孟思颐佳 | 学号：24001010430 | 时间：2026-11-19 | 大模型：豆包
-    页面说明：图文列表，数据来自 Cheney_gallery 表，图片为本地创建资源，页面展示后端接口链接与数据内容
+    页面说明：图文列表，数据来自 msyj430_gallery 表，图片为本地创建资源，页面展示后端接口链接与数据内容
 -->
 <html lang="zh-CN">
 
@@ -9,77 +9,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>图文列表 | KeTangAI</title>
-    <link rel="stylesheet" href="css/Cheney_common.css">
-    <link rel="stylesheet" href="css/Cheney_gallery.css">
+    <link rel="stylesheet" href="css/msyj430_common.css">
+    <link rel="stylesheet" href="css/msyj430_gallery.css">
 </head>
 
 <body>
-    <header class="Cheney_topbar">
-        <div class="Cheney_brand">
-            <span class="Cheney_brandMark"></span>
+    <header class="msyj430_topbar">
+        <div class="msyj430_brand">
+            <span class="msyj430_brandMark"></span>
             <span>KeTangAI</span>
         </div>
-        <nav class="Cheney_nav">
-            <a class="Cheney_navLink" href="index.html">首页</a>
-            <a class="Cheney_navLink" href="database.html">数据库测试</a>
-            <a class="Cheney_navLink" href="news.html">科技新闻</a>
-            <a class="Cheney_navLink isActive" href="gallery.html">图文列表</a>
-            <a class="Cheney_navLink" href="chat.html">AI 对话</a>
-            <a class="Cheney_navLink" href="kb.html">知识库</a>
+        <nav class="msyj430_nav">
+            <a class="msyj430_navLink" href="index.html">首页</a>
+            <a class="msyj430_navLink" href="database.html">数据库测试</a>
+            <a class="msyj430_navLink" href="news.html">科技新闻</a>
+            <a class="msyj430_navLink isActive" href="gallery.html">图文列表</a>
+            <a class="msyj430_navLink" href="chat.html">AI 对话</a>
+            <a class="msyj430_navLink" href="kb.html">知识库</a>
         </nav>
-        <div class="Cheney_userTag">孟思颐佳 · 24001010430</div>
+        <div class="msyj430_userTag">孟思颐佳 · 24001010430</div>
     </header>
 
-    <main class="Cheney_page">
-        <div class="Cheney_sectionHead">
+    <main class="msyj430_page">
+        <div class="msyj430_sectionHead">
             <div>
-                <h2 class="Cheney_sectionTitle">图文列表</h2>
-                <div class="Cheney_sectionDesc" style="margin-top: 10px;">数据表：Cheney_gallery · 共 8 条测试数据 · 图片来自 frontend/images</div>
+                <h2 class="msyj430_sectionTitle">图文列表</h2>
+                <div class="msyj430_sectionDesc" style="margin-top: 10px;">数据表：msyj430_gallery · 共 8 条测试数据 · 图片来自 frontend/images</div>
             </div>
         </div>
 
-        <div class="Cheney_apiPanel">
-            <div class="Cheney_apiRow">
-                <span class="Cheney_apiMethod">GET</span>
-                <a class="Cheney_apiUrl" id="Cheney_apiUrl" href="#" target="_blank">http://localhost:8325/api/gallery</a>
-                <span id="Cheney_apiState">加载中…</span>
-                <span class="Cheney_apiToggle" id="Cheney_apiToggle">收起返回数据</span>
+        <div class="msyj430_apiPanel">
+            <div class="msyj430_apiRow">
+                <span class="msyj430_apiMethod">GET</span>
+                <a class="msyj430_apiUrl" id="msyj430_apiUrl" href="#" target="_blank">http://localhost:8325/api/gallery</a>
+                <span id="msyj430_apiState">加载中…</span>
+                <span class="msyj430_apiToggle" id="msyj430_apiToggle">收起返回数据</span>
             </div>
-            <pre class="Cheney_code" id="Cheney_apiCode">正在请求接口…</pre>
+            <pre class="msyj430_code" id="msyj430_apiCode">正在请求接口…</pre>
         </div>
 
-        <div class="Cheney_toolbar">
-            <button class="Cheney_toolbarBtn" id="Cheney_refreshBtn" type="button">刷新数据</button>
-            <span class="Cheney_toolbarInfo" id="Cheney_totalInfo">—</span>
+        <div class="msyj430_toolbar">
+            <button class="msyj430_toolbarBtn" id="msyj430_refreshBtn" type="button">刷新数据</button>
+            <span class="msyj430_toolbarInfo" id="msyj430_totalInfo">—</span>
         </div>
 
-        <div class="Cheney_galleryGrid" id="Cheney_galleryGrid">
-            <div class="Cheney_skeleton"></div>
-            <div class="Cheney_skeleton"></div>
-            <div class="Cheney_skeleton"></div>
+        <div class="msyj430_galleryGrid" id="msyj430_galleryGrid">
+            <div class="msyj430_skeleton"></div>
+            <div class="msyj430_skeleton"></div>
+            <div class="msyj430_skeleton"></div>
         </div>
     </main>
 
-    <div class="Cheney_lightbox" id="Cheney_lightbox">
-        <div class="Cheney_lightboxInner">
-            <div class="Cheney_lightboxFigure">
-                <img id="Cheney_lightboxImg" src="" alt="图文预览">
+    <div class="msyj430_lightbox" id="msyj430_lightbox">
+        <div class="msyj430_lightboxInner">
+            <div class="msyj430_lightboxFigure">
+                <img id="msyj430_lightboxImg" src="" alt="图文预览">
             </div>
-            <div class="Cheney_lightboxBody">
-                <h3 class="Cheney_lightboxTitle" id="Cheney_lightboxTitle">—</h3>
-                <p class="Cheney_lightboxDesc" id="Cheney_lightboxDesc">—</p>
-                <div class="Cheney_lightboxMeta" id="Cheney_lightboxMeta"></div>
-                <pre class="Cheney_code" id="Cheney_lightboxCode"></pre>
-                <button class="Cheney_lightboxClose" id="Cheney_lightboxClose" type="button">关闭预览</button>
+            <div class="msyj430_lightboxBody">
+                <h3 class="msyj430_lightboxTitle" id="msyj430_lightboxTitle">—</h3>
+                <p class="msyj430_lightboxDesc" id="msyj430_lightboxDesc">—</p>
+                <div class="msyj430_lightboxMeta" id="msyj430_lightboxMeta"></div>
+                <pre class="msyj430_code" id="msyj430_lightboxCode"></pre>
+                <button class="msyj430_lightboxClose" id="msyj430_lightboxClose" type="button">关闭预览</button>
             </div>
         </div>
     </div>
 
-    <footer class="Cheney_footer">
+    <footer class="msyj430_footer">
         KeTangAI 科技资讯平台 · 孟思颐佳 24001010430 · 图文列表
     </footer>
 
-    <script src="js/Cheney_gallery.js"></script>
+    <script src="js/msyj430_gallery.js"></script>
 </body>
 
 </html>

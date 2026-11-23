@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     姓名：孟思颐佳 | 学号：24001010430 | 时间：2026-11-19 | 大模型：豆包
-    页面说明：科技新闻列表，数据来自 Cheney_news 表，页面展示后端接口链接与数据内容
+    页面说明：科技新闻列表，数据来自 msyj430_news 表，页面展示后端接口链接与数据内容
 -->
 <html lang="zh-CN">
 
@@ -9,62 +9,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>科技新闻列表 | KeTangAI</title>
-    <link rel="stylesheet" href="css/Cheney_common.css">
-    <link rel="stylesheet" href="css/Cheney_news.css">
+    <link rel="stylesheet" href="css/msyj430_common.css">
+    <link rel="stylesheet" href="css/msyj430_news.css">
 </head>
 
 <body>
-    <header class="Cheney_topbar">
-        <div class="Cheney_brand">
-            <span class="Cheney_brandMark"></span>
+    <header class="msyj430_topbar">
+        <div class="msyj430_brand">
+            <span class="msyj430_brandMark"></span>
             <span>KeTangAI</span>
         </div>
-        <nav class="Cheney_nav">
-            <a class="Cheney_navLink" href="index.html">首页</a>
-            <a class="Cheney_navLink" href="database.html">数据库测试</a>
-            <a class="Cheney_navLink isActive" href="news.html">科技新闻</a>
-            <a class="Cheney_navLink" href="gallery.html">图文列表</a>
-            <a class="Cheney_navLink" href="chat.html">AI 对话</a>
-            <a class="Cheney_navLink" href="kb.html">知识库</a>
+        <nav class="msyj430_nav">
+            <a class="msyj430_navLink" href="index.html">首页</a>
+            <a class="msyj430_navLink" href="database.html">数据库测试</a>
+            <a class="msyj430_navLink isActive" href="news.html">科技新闻</a>
+            <a class="msyj430_navLink" href="gallery.html">图文列表</a>
+            <a class="msyj430_navLink" href="chat.html">AI 对话</a>
+            <a class="msyj430_navLink" href="kb.html">知识库</a>
         </nav>
-        <div class="Cheney_userTag">孟思颐佳 · 24001010430</div>
+        <div class="msyj430_userTag">孟思颐佳 · 24001010430</div>
     </header>
 
-    <main class="Cheney_page">
-        <div class="Cheney_sectionHead">
+    <main class="msyj430_page">
+        <div class="msyj430_sectionHead">
             <div>
-                <h2 class="Cheney_sectionTitle">科技新闻列表</h2>
-                <div class="Cheney_sectionDesc" style="margin-top: 10px;">数据表：Cheney_news · 共 8 条测试数据</div>
+                <h2 class="msyj430_sectionTitle">科技新闻列表</h2>
+                <div class="msyj430_sectionDesc" style="margin-top: 10px;">数据表：msyj430_news · 共 8 条测试数据</div>
             </div>
         </div>
 
-        <div class="Cheney_apiPanel">
-            <div class="Cheney_apiRow">
-                <span class="Cheney_apiMethod">GET</span>
-                <a class="Cheney_apiUrl" id="Cheney_apiUrl" href="#" target="_blank">http://localhost:8325/api/news</a>
-                <span id="Cheney_apiState">加载中…</span>
-                <span class="Cheney_apiToggle" id="Cheney_apiToggle">收起返回数据</span>
+        <div class="msyj430_apiPanel">
+            <div class="msyj430_apiRow">
+                <span class="msyj430_apiMethod">GET</span>
+                <a class="msyj430_apiUrl" id="msyj430_apiUrl" href="#" target="_blank">http://localhost:8325/api/news</a>
+                <span id="msyj430_apiState">加载中…</span>
+                <span class="msyj430_apiToggle" id="msyj430_apiToggle">收起返回数据</span>
             </div>
-            <pre class="Cheney_code" id="Cheney_apiCode">正在请求接口…</pre>
+            <pre class="msyj430_code" id="msyj430_apiCode">正在请求接口…</pre>
         </div>
 
-        <div class="Cheney_toolbar">
-            <button class="Cheney_toolbarBtn" id="Cheney_refreshBtn" type="button">刷新数据</button>
-            <span class="Cheney_toolbarInfo" id="Cheney_totalInfo">—</span>
+        <div class="msyj430_toolbar">
+            <button class="msyj430_toolbarBtn" id="msyj430_refreshBtn" type="button">刷新数据</button>
+            <span class="msyj430_toolbarInfo" id="msyj430_totalInfo">—</span>
         </div>
 
-        <div class="Cheney_newsList" id="Cheney_newsList">
-            <div class="Cheney_skeleton"></div>
-            <div class="Cheney_skeleton"></div>
-            <div class="Cheney_skeleton"></div>
+        <div class="msyj430_newsList" id="msyj430_newsList">
+            <div class="msyj430_skeleton"></div>
+            <div class="msyj430_skeleton"></div>
+            <div class="msyj430_skeleton"></div>
         </div>
     </main>
 
-    <footer class="Cheney_footer">
+    <footer class="msyj430_footer">
         KeTangAI 科技资讯平台 · 孟思颐佳 24001010430 · 科技新闻
     </footer>
 
-    <script src="js/Cheney_news.js"></script>
+    <script src="js/msyj430_news.js"></script>
 </body>
 
 </html>

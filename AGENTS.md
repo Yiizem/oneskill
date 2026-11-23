@@ -38,7 +38,7 @@
 
 \- CSS 类名、JS 变量名、JS 函数名、数据库表名（及字段相关命名）
 
-&#x20; 一律以 Cheney\_ 开头
+&#x20; 一律以 msyj430\_ 开头
 
 \- 每个文件头部包含注释块：
 
@@ -48,17 +48,17 @@
 
 \## 记录文件（一律追加写入，禁止覆盖已有内容）
 
-\- Cheney\_prompt.md（项目根目录）：每次向 AI 发出开发指令后，
+\- msyj430\_prompt.md（项目根目录）：每次向 AI 发出开发指令后，
 
 &#x20; 追加记录：时间 | 提示词全文 | 大模型名称
 
-\- backend/Cheney\_interface.md：每次创建或修改接口后，追加：
+\- backend/msyj430\_interface.md：每次创建或修改接口后，追加：
 
 &#x20; 接口路径 | HTTP 方法 | 请求参数（含示例）|
 
 &#x20; 响应格式（含 JSON 示例）| 修改时间
 
-\- backend/Cheney\_database.md：每次建表、改表或插入数据后，
+\- backend/msyj430\_database.md：每次建表、改表或插入数据后，
 
 &#x20; 按执行顺序追加对应 SQL 语句（含测试数据的 INSERT），
 

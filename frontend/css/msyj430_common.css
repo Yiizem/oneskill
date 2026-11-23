@@ -1,0 +1,353 @@
+/*
+ * 姓名：孟思颐佳 | 学号：24001010430 | 时间：2026-11-19 | 大模型：豆包
+ * 文件说明：全站公共样式（配色、导航、卡片、按钮、接口面板）
+ */
+
+:root {
+    --msyj430_bgDeep: #060912;
+    --msyj430_bgPanel: rgba(18, 27, 45, 0.86);
+    --msyj430_line: rgba(120, 170, 255, 0.16);
+    --msyj430_lineStrong: rgba(78, 225, 255, 0.42);
+    --msyj430_cyan: #4ee1ff;
+    --msyj430_violet: #8b6bff;
+    --msyj430_text: #e8f0fb;
+    --msyj430_textSub: #93a6c4;
+    --msyj430_radius: 14px;
+    --msyj430_shadow: 0 18px 42px rgba(0, 0, 0, 0.45);
+    --msyj430_font: "Microsoft YaHei", "PingFang SC", "Segoe UI", system-ui, sans-serif;
+    --msyj430_mono: "Cascadia Code", "Consolas", "Courier New", monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(1100px 620px at 12% -8%, rgba(78, 225, 255, 0.16), transparent 62%),
+        radial-gradient(900px 560px at 92% 4%, rgba(139, 107, 255, 0.18), transparent 60%),
+        radial-gradient(700px 500px at 50% 108%, rgba(30, 120, 190, 0.12), transparent 62%),
+        var(--msyj430_bgDeep);
+    color: var(--msyj430_text);
+    font-family: var(--msyj430_font);
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 顶部导航 */
+.msyj430_topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 14px 32px;
+    background: rgba(6, 9, 18, 0.72);
+    border-bottom: 1px solid var(--msyj430_line);
+    backdrop-filter: blur(14px);
+}
+
+.msyj430_brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.msyj430_brandMark {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(140deg, var(--msyj430_cyan), var(--msyj430_violet));
+    box-shadow: 0 0 18px rgba(78, 225, 255, 0.45);
+}
+
+.msyj430_nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.msyj430_navLink {
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--msyj430_textSub, #93a6c4);
+    border: 1px solid transparent;
+    transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.msyj430_navLink:hover {
+    color: var(--msyj430_text);
+    border-color: var(--msyj430_line);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.msyj430_navLink.isActive {
+    color: #06121c;
+    background: linear-gradient(120deg, var(--msyj430_cyan), #7ae9ff);
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(78, 225, 255, 0.28);
+}
+
+.msyj430_userTag {
+    font-size: 13px;
+    color: var(--msyj430_textSub, #93a6c4);
+    padding: 7px 13px;
+    border: 1px dashed var(--msyj430_line);
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* 内容容器 */
+.msyj430_page {
+    width: min(1180px, 94vw);
+    margin: 0 auto;
+    padding: 34px 0 64px;
+}
+
+.msyj430_sectionHead {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.msyj430_sectionTitle {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+}
+
+.msyj430_sectionTitle::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin-top: 9px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--msyj430_cyan), var(--msyj430_violet));
+}
+
+.msyj430_sectionDesc {
+    font-size: 13px;
+    color: var(--msyj430_textSub, #93a6c4);
+}
+
+/* 卡片 */
+.msyj430_card {
+    background: var(--msyj430_bgPanel);
+    border: 1px solid var(--msyj430_line);
+    border-radius: var(--msyj430_radius);
+    box-shadow: var(--msyj430_shadow);
+}
+
+.msyj430_badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    color: var(--msyj430_cyan);
+    border: 1px solid var(--msyj430_lineStrong);
+    background: rgba(78, 225, 255, 0.08);
+}
+
+.msyj430_btn {
+    cursor: pointer;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 11px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 700;
+    color: #04121a;
+    background: linear-gradient(120deg, var(--msyj430_cyan), #8ef0ff);
+    box-shadow: 0 10px 24px rgba(78, 225, 255, 0.24);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
+}
+
+.msyj430_btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(78, 225, 255, 0.34);
+}
+
+.msyj430_btn:active {
+    transform: translateY(0);
+}
+
+.msyj430_btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    box-shadow: none;
+}
+
+.msyj430_btnGhost {
+    color: var(--msyj430_text);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--msyj430_line);
+    box-shadow: none;
+}
+
+.msyj430_btnGhost:hover {
+    border-color: var(--msyj430_lineStrong);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* 接口信息面板：显示后端接口链接与返回数据 */
+.msyj430_apiPanel {
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    border-radius: var(--msyj430_radius);
+    border: 1px solid var(--msyj430_line);
+    background: linear-gradient(160deg, rgba(16, 26, 44, 0.95), rgba(10, 16, 28, 0.92));
+}
+
+.msyj430_apiRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--msyj430_textSub, #93a6c4);
+}
+
+.msyj430_apiMethod {
+    padding: 3px 9px;
+    border-radius: 7px;
+    font-family: var(--msyj430_mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: #06121c;
+    background: var(--msyj430_cyan);
+}
+
+.msyj430_apiUrl {
+    font-family: var(--msyj430_mono);
+    font-size: 13px;
+    color: #d3f6ff;
+    word-break: break-all;
+}
+
+.msyj430_apiUrl:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--msyj430_lineStrong);
+}
+
+.msyj430_apiToggle {
+    margin-left: auto;
+    cursor: pointer;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--msyj430_cyan);
+    background: rgba(78, 225, 255, 0.08);
+    border: 1px solid var(--msyj430_lineStrong);
+}
+
+.msyj430_code {
+    margin-top: 12px;
+    max-height: 200px;
+    overflow: auto;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: rgba(3, 7, 14, 0.85);
+    border: 1px solid rgba(120, 170, 255, 0.12);
+    color: #a9c7e6;
+    font-family: var(--msyj430_mono);
+    font-size: 12.5px;
+    line-height: 1.65;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.msyj430_tip {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--msyj430_textSub, #93a6c4);
+}
+
+/* 列表页工具栏 */
+.msyj430_toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.msyj430_toolbarBtn {
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--msyj430_cyan);
+    background: rgba(78, 225, 255, 0.08);
+    border: 1px solid var(--msyj430_lineStrong);
+}
+
+.msyj430_toolbarBtn:hover {
+    background: rgba(78, 225, 255, 0.16);
+}
+
+.msyj430_toolbarBtn:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.msyj430_toolbarInfo {
+    font-size: 13px;
+    color: var(--msyj430_textSub, #93a6c4);
+}
+
+/* 页脚 */
+.msyj430_footer {
+    padding: 22px 0 34px;
+    text-align: center;
+    font-size: 12.5px;
+    color: rgba(147, 166, 196, 0.75);
+    border-top: 1px solid var(--msyj430_line);
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(78, 225, 255, 0.28);
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 760px) {
+    .msyj430_topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 18px;
+    }
+
+    .msyj430_page {
+        padding-top: 22px;
+    }
+}

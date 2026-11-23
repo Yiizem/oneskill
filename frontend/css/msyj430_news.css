@@ -1,0 +1,137 @@
+/*
+ * 姓名：孟思颐佳 | 学号：24001010430 | 时间：2026-11-19 | 大模型：豆包
+ * 文件说明：科技新闻列表页样式（工具栏样式已在 msyj430_common.css 中统一定义）
+ */
+
+.msyj430_newsList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.msyj430_newsItem {
+    position: relative;
+    padding: 22px 24px;
+    border-radius: 14px;
+    border: 1px solid var(--msyj430_line);
+    background: linear-gradient(160deg, rgba(19, 29, 48, 0.9), rgba(10, 16, 30, 0.9));
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.msyj430_newsItem:hover {
+    transform: translateX(4px);
+    border-color: var(--msyj430_lineStrong);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
+}
+
+.msyj430_newsTop {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.msyj430_newsIndex {
+    font-family: var(--msyj430_mono);
+    font-size: 12px;
+    color: rgba(147, 166, 196, 0.9);
+}
+
+.msyj430_newsCategory {
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: #9df0d0;
+    border: 1px solid rgba(64, 220, 150, 0.4);
+    background: rgba(64, 220, 150, 0.08);
+}
+
+.msyj430_newsTitle {
+    font-size: 17.5px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: #eef7ff;
+}
+
+.msyj430_newsSummary {
+    margin-top: 9px;
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--msyj430_textSub);
+}
+
+.msyj430_newsMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: rgba(147, 166, 196, 0.92);
+    font-family: var(--msyj430_mono);
+}
+
+.msyj430_newsDetailBtn {
+    position: absolute;
+    right: 22px;
+    bottom: 18px;
+    cursor: pointer;
+    padding: 6px 13px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: var(--msyj430_cyan);
+    background: rgba(78, 225, 255, 0.08);
+    border: 1px solid var(--msyj430_lineStrong);
+}
+
+.msyj430_newsDetailBtn:hover {
+    background: rgba(78, 225, 255, 0.18);
+}
+
+.msyj430_newsContent {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border-left: 3px solid var(--msyj430_cyan);
+    background: rgba(4, 10, 20, 0.72);
+    font-size: 13.5px;
+    line-height: 1.9;
+    color: #cfe3f8;
+}
+
+.msyj430_newsContentHead {
+    margin-bottom: 8px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--msyj430_cyan);
+    font-family: var(--msyj430_mono);
+}
+
+.msyj430_empty {
+    padding: 44px 0;
+    text-align: center;
+    font-size: 14px;
+    color: rgba(147, 166, 196, 0.85);
+}
+
+.msyj430_skeleton {
+    height: 132px;
+    border-radius: 14px;
+    border: 1px solid var(--msyj430_line);
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0.03) 20%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.03) 60%);
+    background-size: 220% 100%;
+    animation: msyj430_shimmer 1.6s infinite linear;
+}
+
+@keyframes msyj430_shimmer {
+    from { background-position: 130% 0; }
+    to { background-position: -30% 0; }
+}
+
+@media (max-width: 640px) {
+    .msyj430_newsDetailBtn {
+        position: static;
+        margin-top: 14px;
+        display: inline-block;
+    }
+}

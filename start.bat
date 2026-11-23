@@ -19,14 +19,14 @@ echo         MySQL is running.
 goto DEP_CHECK
 
 :START_MYSQL
-set "CHENEY_MYSQLD=C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe"
+set "msyj430_MYSQLD=C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe"
 echo         MySQL is not running, starting local instance ...
-if exist "%CHENEY_MYSQLD%" goto DO_START_MYSQL
+if exist "%msyj430_MYSQLD%" goto DO_START_MYSQL
 echo         [WARN] mysqld not found, please start MySQL manually.
 goto DEP_CHECK
 
 :DO_START_MYSQL
-start "Cheney_MySQL" /min "%CHENEY_MYSQLD%" --datadir=E:\MySQLData\data --port=8430 --mysqlx=0 --log-error=E:\MySQLData\logs\mysqld.err
+start "msyj430_MySQL" /min "%msyj430_MYSQLD%" --datadir=E:\MySQLData\data --port=8430 --mysqlx=0 --log-error=E:\MySQLData\logs\mysqld.err
 echo         Start command sent, waiting 8 seconds ...
 timeout /t 8 /nobreak >nul
 goto DEP_CHECK
